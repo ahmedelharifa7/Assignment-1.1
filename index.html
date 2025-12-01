@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CSS Pseudo-Elements & Pseudo-Classes — Study Book</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>CSS Pseudo-Elements & Pseudo-Classes — Study Book</h1>
+      <p class="lead">Educational style: clear cards with live demos + short code snippets. Scroll to explore examples for every selector.</p>
+    </header>
+
+    <!-- PSEUDO-ELEMENTS -->
+    <section>
+      <h2>Pseudo-Elements</h2>
+      <div class="grid">
+
+        <!-- ::before / ::after -->
+        <div class="example">
+          <div class="ex-title">::before & ::after</div>
+          <div class="ex-desc">Insert content before or after an element's content. Great for icons, decorations, or small labels.</div>
+
+          <div class="demo before-after">Decorated paragraph using <strong>::before</strong> and <strong>::after</strong>.</div>
+
+          <div class="code-snip">
+            <pre><code>&lt;p class="demo before-after"&gt;Text&lt;/p&gt;
+.demo.before-after::before{ content: " * "; }
+.demo.before-after::after { content: " # "; }</code></pre>
+          </div>
+        </div>
+
+        <!-- ::first-letter -->
+        <div class="example">
+          <div class="ex-title">::first-letter</div>
+          <div class="ex-desc">Style the first letter of a block — used for drop-caps or emphasis.</div>
+
+          <div class="demo first-letter">Once upon a time, this paragraph uses <strong>::first-letter</strong> to create a drop-cap style.</div>
+
+          <div class="code-snip">
+            <pre><code>&lt;p class="demo first-letter"&gt;Once upon...&lt;/p&gt;
+.demo.first-letter::first-letter{ font-size:28px; color:#b91c1c }</code></pre>
+          </div>
+        </div>
+
+        <!-- ::first-line -->
+        <div class="example">
+          <div class="ex-title">::first-line</div>
+          <div class="ex-desc">Style only the very first line of text (depends on line width).</div>
+
+          <div class="demo first-line">This line is styled with <strong>::first-line</strong>. Note: it affects exactly the first rendered line, so resizing the window changes the effect.</div>
+
+          <div class="code-snip">
+            <pre><code>&lt;p class="demo first-line"&gt;Lorem ipsum...&lt;/p&gt;
+.demo.first-line::first-line{ font-weight:700; color:#0b5aa6 }</code></pre>
+          </div>
+        </div>
+
+        <!-- Combined short note -->
+        <div class="example">
+          <div class="ex-title">Notes</div>
+          <div class="ex-desc">Pseudo-elements target parts of elements. Use double-colon `::` (modern) though single-colon works in older browsers for some.</div>
+          <div class="code-snip">
+            <pre><code>::before, ::after, ::first-letter, ::first-line</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PSEUDO-CLASSES: User interaction -->
+    <section>
+      <h2>User Interaction</h2>
+      <div class="grid">
+
+        <!-- :hover -->
+        <div class="example">
+          <div class="ex-title">:hover</div>
+          <div class="ex-desc">Apply style when the mouse is over an element.</div>
+
+          <div class="demo">
+            <button class="btn-basic">Hover over me</button>
+          </div>
+
+          <div class="code-snip">
+            <pre><code>.btn-basic:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(...); }</code></pre>
+          </div>
+        </div>
+
+        <!-- :active -->
+        <div class="example">
+          <div class="ex-title">:active</div>
+          <div class="ex-desc">Style when the element is being clicked (pressed).</div>
+
+          <div class="demo">
+            <button class="btn-basic">Click and hold me</button>
+          </div>
+
+          <div class="code-snip">
+            <pre><code>.btn-basic:active { filter: brightness(.92); transform: translateY(0); }</code></pre>
+          </div>
+        </div>
+
+        <!-- :focus -->
+        <div class="example">
+          <div class="ex-title">:focus</div>
+          <div class="ex-desc">When an element receives focus (keyboard typing, tabbing). Useful for accessibility.</div>
+
+          <div class="demo">
+            <input type="text" placeholder="Tab here or click to focus" />
+          </div>
+
+          <div class="code-snip">
+            <pre><code>input:focus { box-shadow: 0 0 0 4px rgba(37,99,235,0.09); outline: none; }</code></pre>
+          </div>
+        </div>
+
+        <!-- :checked -->
+        <div class="example">
+          <div class="ex-title">:checked</div>
+          <div class="ex-desc">Applies to checked radio buttons and checkboxes.</div>
+
+          <div class="demo check-demo">
+            <label><input type="checkbox" id="c1"> Toggle me</label>
+            &nbsp;&nbsp;
+            <label><input type="radio" name="r" checked> Option A</label>
+            &nbsp;&nbsp;
+            <label><input type="radio" name="r"> Option B</label>
+          </div>
+
+          <div class="code-snip">
+            <pre><code>input[type="checkbox"]:checked + label { /* or input:checked { } */ }</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Link states -->
+    <section>
+      <h2>Link States</h2>
+      <div class="grid">
+
+        <!-- :link and :visited -->
+        <div class="example">
+          <div class="ex-title">:link &amp; :visited</div>
+          <div class="ex-desc">Style links depending on whether user has visited them.</div>
+
+          <div class="demo link-demo">
+            <a href="#sample1">Unvisited (#sample1)</a>
+            <a href="javascript:void(0)" id="fakeVisited">Simulate visited</a>
+            <p style="font-size:12px;color:var(--muted);margin-top:8px">Note: real :visited styles are restricted by browsers (only color-related properties usually allowed).</p>
+          </div>
+
+          <div class="code-snip">
+            <pre><code>a:link { background:#e8f1ff; color:#0b5aa6; }
+a:visited { background:#f3e8ff; color:#6b21a8; }</code></pre>
+          </div>
+        </div>
+
+        <!-- :target -->
+        <div class="example">
+          <div class="ex-title">:target</div>
+          <div class="ex-desc">Matches the element referenced by the URL hash (e.g. `page.html#section1`). Useful for in-page navigation and highlights.</div>
+
+          <div class="demo target-box">
+            <div><a href="#target1">Go to Target 1</a> • <a href="#target2">Go to Target 2</a></div>
+            <div id="target1" style="margin-top:8px;padding:8px;border-radius:6px">Section <strong>target1</strong> — click the link to jump here and see the :target effect.</div>
+            <div id="target2" style="margin-top:8px;padding:8px;border-radius:6px">Section <strong>target2</strong></div>
+          </div>
+
+          <div class="code-snip">
+            <pre><code>#target1:target { outline: 3px solid rgba(34,197,94,0.15); }</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Structural selectors: position -->
+    <section>
+      <h2>Structural Selectors (Position)</h2>
+      <div class="grid">
+
+        <!-- :first-child -->
+        <div class="example">
+          <div class="ex-title">:first-child / :last-child</div>
+          <div class="ex-desc">Select elements based on their position among siblings.</div>
+
+          <div class="demo list-demo">
+            <ol>
+              <li class="fc">Item 1 (first-child)</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+              <li class="lc">Item 4 (last-child)</li>
+            </ol>
+          </div>
+
+          <div class="code-snip">
+            <pre><code>ol li:first-child { font-weight:700; }
+ol li:last-child  { font-style:italic; }</code></pre>
+          </div>
+        </div>
+
+        <!-- :nth-child / :nth-last-child -->
+        <div class="example">
+          <div class="ex-title">:nth-child() / :nth-last-child()</div>
+          <div class="ex-desc">Select the nth child (1-based). Supports formulas like 2n, 2n+1, odd, even.</div>
+
+          <div class="demo list-demo">
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+            <p style="font-size:13px;color:var(--muted);margin-top:8px">CSS highlights are applied via stylesheet (see snippet below).</p>
+          </div>
+
+          <div class="code-snip">
+            <pre><code>ul li:nth-child(odd) { background:#f8fafc; }
+ul li:nth-child(3)   { font-weight:700; }</code></pre>
+          </div>
+        </div>
+
+        <!-- :nth-last-child demo note (same idea) -->
+        <div class="example">
+          <div class="ex-title">:nth-last-child()</div>
+          <div class="ex-desc">Select counting from the end (last child is 1).</div>
+
+          <div class="demo list-demo">
+            <ol>
+              <li>First</li>
+              <li>Second</li>
+              <li>Third</li>
+              <li>Fourth</li>
+            </ol>
+          </div>
+
+          <div class="code-snip">
+            <pre><code>ol li:nth-last-child(2) { background:#fff; border-left:3px solid var(--accent); }</code></pre>
+          </div>
+        </div>
+
+        <!-- spacer -->
+        <div class="example">
+          <div class="ex-title">Quick tip</div>
+          <div class="ex-desc">Use :nth-child(an+b) for repeating patterns (e.g., 2n for even rows).</div>
+          <div class="code-snip"><pre><code>li:nth-child(2n) { background: #f3f4f6 }</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Structural selectors: by type & only -->
+    <section>
+      <h2>Structural Selectors (By Type)</h2>
+      <div class="grid">
+
+        <!-- first-of-type / last-of-type -->
+        <div class="example">
+          <div class="ex-title">:first-of-type / :last-of-type</div>
+          <div class="ex-desc">Select the first/last element of a given type among siblings (e.g., first &lt;p&gt;).</div>
+
+          <div class="demo type-demo">
+            <p>Paragraph A (first-of-type)</p>
+            <p>Paragraph B</p>
+            <div>Div element (not a &lt;p&gt;)</div>
+            <p>Paragraph C (last-of-type)</p>
+          </div>
+
+          <div class="code-snip"><pre><code>p:first-of-type { background:#eef2ff; }
+p:last-of-type  { box-shadow: inset 0 0 0 2px rgba(37,99,235,0.06); }</code></pre></div>
+        </div>
+
+        <!-- nth-of-type -->
+        <div class="example">
+          <div class="ex-title">:nth-of-type() / :nth-last-of-type()</div>
+          <div class="ex-desc">Select the nth element of that type (e.g., 2nd &lt;li&gt; among &lt;li&gt;s).</div>
+
+          <div class="demo type-demo">
+            <p>Type 1</p>
+            <p>Type 2</p>
+            <p>Type 3</p>
+            <p>Type 4</p>
+          </div>
+
+          <div class="code-snip"><pre><code>p:nth-of-type(2) { font-weight:700; color:#0b5aa6 }</code></pre></div>
+        </div>
+
+        <!-- only-child / only-of-type -->
+        <div class="example">
+          <div class="ex-title">:only-child / :only-of-type</div>
+          <div class="ex-desc">Select elements that are the only child (or only of their type) inside their parent.</div>
+
+          <div class="demo">
+            <div class="only-demo">
+              <div style="margin-bottom:8px">Parent with only one child:</div>
+              <div style="padding:8px;border-radius:6px;background:#fff">I am the only child (matches :only-child)</div>
+            </div>
+
+            <div style="margin-top:12px" class="only-demo">
+              <div style="margin-bottom:8px">Parent with multiple children:</div>
+              <p>Not only</p><p>Also not only</p>
+            </div>
+          </div>
+
+          <div class="code-snip"><pre><code>div:only-child { border:2px dashed #c084fc }
+p:only-of-type { background:#fff3cd }</code></pre></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Form state pseudo-classes -->
+    <section>
+      <h2>Form State Selectors</h2>
+      <div class="grid">
+
+        <!-- :valid / :invalid -->
+        <div class="example">
+          <div class="ex-title">:valid / :invalid</div>
+          <div class="ex-desc">Validate inputs with HTML attributes (type, pattern, required) and style them accordingly.</div>
+
+          <div class="demo">
+            <input type="email" placeholder="type a valid email (e.g. name@site.com)" />
+          </div>
+
+          <div class="code-snip"><pre><code>input:valid   { border-color: green }
+input:invalid { border-color: red }</code></pre></div>
+        </div>
+
+        <!-- :disabled / :enabled short mention -->
+        <div class="example">
+          <div class="ex-title">:disabled / :enabled</div>
+          <div class="ex-desc">Style disabled controls (grayed out) and enabled controls differently.</div>
+
+          <div class="demo">
+            <button disabled style="padding:8px;border-radius:6px">Disabled</button>
+            &nbsp;
+            <button style="padding:8px;border-radius:6px">Enabled</button>
+          </div>
+
+          <div class="code-snip"><pre><code>button:disabled { opacity:.5; cursor:not-allowed }</code></pre></div>
+        </div>
+
+        <!-- :target (repeated small demo) -->
+        <div class="example">
+          <div class="ex-title">:target (Reminder)</div>
+          <div class="ex-desc">The element whose id matches the URL hash becomes :target.</div>
+
+          <div class="demo">
+            <a href="#end">Jump to "end"</a>
+            <div id="end" style="margin-top:8px;padding:8px;border-radius:6px">Target area (try clicking the link above)</div>
+          </div>
+
+          <div class="code-snip"><pre><code>#end:target { outline:3px solid rgba(37,99,235,0.12) }</code></pre></div>
+        </div>
+
+        <!-- :required / :optional note -->
+        <div class="example">
+          <div class="ex-title">:required / :optional</div>
+          <div class="ex-desc">Style fields based on whether they are required.</div>
+
+          <div class="demo">
+            <label style="display:block;margin-bottom:6px">Required: <input required placeholder="required field"></label>
+            <label>Optional: <input placeholder="optional field"></label>
+          </div>
+
+          <div class="code-snip"><pre><code>input:required { border-left:3px solid #ef4444 }
+input:optional { opacity:.95 }</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Simulate a "visited" link by toggling a class (browsers restrict :visited properties for privacy,
+    // so we provide a visual simulation for study).
+    document.getElementById('fakeVisited')?.addEventListener('click', function(e){
+      e.preventDefault();
+      const a = document.createElement('a');
+      a.href = '#sample1';
+      a.textContent = 'Visited (simulated)';
+      this.replaceWith(a);
+      a.style.background = '#f3e8ff';
+      a.style.color = '#6b21a8';
+      a.style.padding = '6px 10px';
+      a.style.borderRadius = '6px';
+      a.style.textDecoration = 'none';
+    });
+  </script>
+</body>
+</html>
